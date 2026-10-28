@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <link rel="icon" type="image/png" href="Smiley.png">
+ <title>Mergen's Corner</title>
+ <style>
+
+
+   @font-face {
+    font-family: Jokerman;
+    src: url("Jokerman.otf")
+   }
+ 
+   body {
+     margin: 0;
+     text-align: center;
+     background-image:linear-gradient(dodgerblue, blue, navy);
+     color:#fff;
+     font-family: Arial, Helvetica, sans-serif;
+     }
+
+
+   #wrap {
+     height:100vh;
+     justify-content:center;
+     align-items:center;
+     overflow: hidden;
+     }
+
+
+   h1 {
+    font-size: 65px;
+    margin: 100px;
+  }
+
+
+   canvas {
+     margin: 10px;
+     background:#000000;
+     border-radius:16px;
+     }
+
+
+
+
+ </style>
+</head>
+<body>
+ <h1>Bubble Pop</h1>
+ <audio id="bgMusic" src="In_the_Morning.mp3" loop></audio>
+ <audio id="popSound" src="Pop.mp3"></audio>
+ <div id="wrap">
+   <canvas id="game" width="1400" height="700"></canvas>
+ </div>
+
+
+
+
+<script>
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+
+
+  const START_BALLS = 100;
+  const MIN_R = 18;
+  const MAX_R = 28;
+
+
+  let balls = [];
+  let round = 1;
+  let score = 0;
+  let time = 1000;
+  let timerActive = true;
+
+
+  function rand(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+
+  function randomColor() {
+    return `rgb(${(rand(0, 25))}, ${(rand(0, 25))}, ${(rand(50, 255))})`;
+  }
+
+
+  function makeBall() {
+    const r = rand(MIN_R, MAX_R);
+    return {
+      x: rand(r, canvas.width - r),
+      y: rand(r, canvas.height - r),
+      r: r,
+      vx: rand(-3, 3),
+      vy: rand(-3, 3),
+      color: randomColor(),
+      popped: false
+    };
+  }
+
+
+  function initBalls() {
+    balls = [];
+    for (let i = 0; i < START_BALLS + ((round - 1) * 2); i++) {
+      balls.push(makeBall());
+    }
+  }
+
+
+  const countdown = setInterval(() => {
+      time--;
+      if (time <= 0) {
+        clearInterval(countdown);
+       alert("Game over! Your score: " + score);
+        location.reload();
+      } }, 1000);
+
+
+  function resolveCollision(b1, b2) {
+  const dx = b2.x - b1.x;
+  const dy = b2.y - b1.y;
+  const distance = Math.hypot(dx, dy);
+
+
+  if (distance < b1.r + b2.r) {
+    const tempVx = b1.vx;
+    const tempVy = b1.vy;
+   
+    b1.vx = b2.vx;
+    b1.vy = b2.vy;
+   
+    b2.vx = tempVx;
+    b2.vy = tempVy;
+
+
+    const overlap = b1.r + b2.r - distance;
+    const nx = dx / distance;
+    const ny = dy / distance;
+   
+    b1.x -= nx * (overlap / 2);
+    b1.y -= ny * (overlap / 2);
+    b2.x += nx * (overlap / 2);
+    b2.y += ny * (overlap / 2);
+  }
+}
+
+
+  function update() {
+    for (let i = 0; i < balls.length; i++) {
+    for (let j = i + 1; j < balls.length; j++) {
+      resolveCollision(balls[i], balls[j]);
+    }
+  }
+
+
+    for (const b of balls) {
+      b.x += b.vx;
+      b.y += b.vy;
+      if (b.x - b.r <= 0 || b.x + b.r >= canvas.width) b.vx *= -1;
+      if (b.y - b.r <= 0 || b.y + b.r >= canvas.height) b.vy *= -1;
+    }
+  }
+
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const b of balls) {
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 3);
+      ctx.fillStyle = b.color;
+      ctx.fill();
+
+
+      ctx.beginPath();
+      const shineX = b.x - b.r * 0.4;
+      const shineY = b.y - b.r * 0.4;
+      const shineRadius = b.r * 0.2;
+
+
+      ctx.arc(shineX, shineY, shineRadius, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+      ctx.fill();
+    }
+    ctx.fillStyle = "white";
+    ctx.font = "20px Arial";
+    ctx.fillText(`Round: ${round}`, 20, 30);
+    ctx.fillText(`Balls left: ${balls.length}`, 20, 60);
+    ctx.fillText(`Time left: ${time}s`, 20, 90);
+    ctx.fillText(`Score: ${score}`, 20, 120);
+  }
+
+
+    canvas.addEventListener("click", function (e) {
+    const audio = document.getElementById('bgMusic');
+    const popSound = document.getElementById('popSound');
+    audio.play();
+   
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+
+
+    const initialCount = balls.length;
+
+
+    balls = balls.filter(b => {
+      const dist = Math.hypot(mx - b.x, my - b.y);
+      return dist > b.r;
+    });
+
+
+    if (balls.length < initialCount) {
+      score += 10;
+      popSound.currentTime = 0;
+      popSound.play();
+    }
+
+
+    if (balls.length === 0) {
+      nextRound();
+    }
+  });
+
+
+  function nextRound() {
+    round++;
+    time = 10 + ((round - 1) * 5);
+    initBalls();
+  }
+
+
+  function gameLoop() {
+    update();
+    draw();
+    requestAnimationFrame(gameLoop);
+  }
+
+
+  initBalls();
+  gameLoop();
+</script>
+</body>
+</html>
