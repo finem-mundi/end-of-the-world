@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collage</title>
+
+    <style>
+
+        @font-face {
+            font-family: Balken;
+            src: url(../balkenschrift-rounded-regular-1-0.ttf);
+        }
+
+        * {
+            font-family: Balken;
+            color: white;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+        }
+
+        .header {
+            background-color: navy;
+            width: 100%;
+            height: 7.5vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .header p {
+            font-size: 2rem;
+            margin-left: 1rem;
+        }
+
+        .body {
+            width: 98%;
+            height: 92.5vh;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 2fr);
+            gap: 1rem;
+        }
+
+        .img {
+            background-color: red;
+            border-radius: 30px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .nameplate {
+            width: 100%;
+            height: 10%;
+            padding: 1rem;
+            font-size: 2rem;
+            background-color: lightgray;
+            display: flex;
+            align-items: center;
+        }
+
+        .img1 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            background-color: red;
+        }
+
+        .img2 {
+            background-color: orangered;
+        }
+
+        .img3 {
+            background-color: gold;
+        }
+
+        .img4 {
+            background-color: green;
+        }
+
+        .img5 {
+            background-color: blue;
+        }
+
+        .img6 {
+            background-color: blueviolet;
+        }
+
+        .img7 {
+            background-color: palevioletred;
+        }
+
+        .img8 {
+            background-color: black;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <p>Beautiful Mongolia</p>
+    </div>
+    <div class="body">
+        <div class="img img1">
+            <div class="nameplate">
+                <p>Hello.</p>
+            </div>
+        </div>
+        <div class="img img2">
+            <div class="nameplate">
+                <p>Hello.</p>
+            </div>
+        </div>
+        <div class="img img3">
+            <div class="nameplate">
+                <p>Hello.</p>
+            </div>
+        </div>
+        <div class="img img4">
+            <div class="nameplate">
+                <p>Hello.</p>
+            </div>
+        </div>
+
+        <div class="img img5">
+            <div class="nameplate">
+                <p>Hello.</p>
+            </div>
+        </div>
+        <div class="img img6">
+            <div class="nameplate">
+                <p>Hello.</p>
+            </div>
+        </div>
+        <div class="img img7">
+            <div class="nameplate">
+                <p>Hello.</p>
+            </div>
+        </div>
+        <div class="img img8">
+            <div class="nameplate">
+                <p>Hello.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
