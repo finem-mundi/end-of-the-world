@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        @font-face {
+            font-family: SpotIt;
+            src: url(../GothamMedium.ttf);
+        }
+
+        * {
+            font-family: SpotIt;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #222;
+            overflow: hidden;
+        }
+
+        .header {
+            width: 100%;
+            height: 8%;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .home {
+            width: 36px;
+            height: 36px;
+            background-color:#212121;
+            align-content: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .home i {
+            color: white;
+            font-size: 20px;
+            margin-left: 6.5px;
+        }
+
+        .query {
+            border-radius: 9999px;
+            width: 20%;
+            height: 36px;
+            background-color: #212121;
+            align-content: center;
+            color: white;
+        }
+
+        .header img {
+            width: 40px;
+            height: 40px;
+            margin-left: 30px;
+        }
+
+        .space1 {
+            width: 100%;
+            height: 2%;
+            background-color: #222;
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 90%;
+        }
+
+        .left {
+            width: 24%;
+            height: 100%;
+            border-radius: 20px 20px 0 0;
+            background-color: #121212;
+        }
+
+        .space2 {
+            width: 1%;
+            height: 100%;
+            background-color: #222;
+        }
+
+        .lefthead i {
+            font-size: 25px;
+            color: #cdcdcd;
+        }
+
+        .left2head {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .space3 {
+            width: 10%;
+            height: 100vh;
+        }
+
+        .library {
+            font-size: 25px;
+            color: #cdcdcd;
+        }
+
+        .lefthead {
+            margin-top: 10px;
+            height: 7.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .right {
+            width: 75%;
+            height: 100%;
+            border-radius: 20px 20px 0 0;
+            background-image: linear-gradient(to bottom, #191919, #121212);
+        }
+        
+        #plus, #arrowright {
+            font-size: 25px;
+        }
+
+        .pill-container {
+            margin-left: 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .pill-btn {
+            display: inline-block;
+            width: auto;
+    
+            border-radius: 9999px;
+            padding: 10px 20px;
+            
+            background-color: #2a2a2a;
+            color: #ffffff;
+            
+            font-size: 16px;
+            font-weight: 200;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .pill-btn-light {
+            display: inline-block;
+            width: auto;
+    
+            border-radius: 9999px;
+            padding: 10px 20px;
+            
+            background-color: #ffffff;
+            color: #2a2a2a;
+            
+            font-size: 16px;
+            font-weight: 200;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .pill-btn:hover {
+            background-color: #3e3e3e;
+        }
+
+        .query i {
+            color: white;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+
+        .space4 {
+            width: 100%;
+            height: 2.5%;
+        }
+
+        #explore {
+            margin-left: 20px;
+            margin-top: 40px;
+            font-size: 25px;
+            color: #fff;
+        }
+
+        .genres {
+            margin: 20px;
+            padding: 20px;
+            max-width: 110px;
+            min-width: 110px;
+            height: 200px;
+            border-radius: 10px;
+            background-image: linear-gradient(to bottom, #555555, #090909);
+            flex-direction: column;
+            display: flex;
+        
+        }
+
+        .genres i {
+            font-size: 60px;
+            color: #999;
+        }
+
+        .genres .name {
+            color: #fff;
+            font-size: 17px;
+            margin-top: 110px;
+        }
+
+        .genre-list {
+            width: 100%;
+            display: flex;
+            gap: 0px;
+        }
+
+        #popular {
+            margin-left: 20px;
+            margin-top: 40px;
+            font-size: 25px;
+            color: #fff;
+        }
+
+        .artistimg img {
+            margin: 20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .artist {
+            gap: 0px;
+        }
+
+        .artistname {
+            color: #fff;
+            font-size: 20px;
+            margin-left: 20px;
+        }
+
+        .isartist {
+            color: #666;
+            font-size: 15px;
+            margin-left: 20px;
+            margin-top: 6px;
+        }
+
+        .artistlist {
+            display: flex;
+            gap: 5px;
+        }
+
+        #leftsearch {
+            font-size: 20px;
+            color:#666;
+            margin: 20px;
+        }
+
+        .searchleft {
+            margin-top: 20px;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .record {
+            width: 50px;
+            height: 50px;
+            background-color:#3e3e3e;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .recordimg img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .record i {
+            font-size: 30px;
+            justify-content: center;
+            color: #cdcdcd;
+        }
+
+        .recordlist {
+            display: flex;
+            align-items: center;
+        }
+
+        .recordlist p {
+            color: #cdcdcd;
+            margin-left: 10px;
+        }
+
+        .recordlist h3 {
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .recents {
+            display: flex;
+        }
+
+        .recents p, i {
+            color: white;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPkGwEMVx8Oa6_fZwY4ofEDJXso_sxGSTyz1nOls8uRw&s=10" alt="logo">
+
+        <div class="home">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+
+        <div class="query">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            What do you want to play?
+        </div>
+
+    </div>
+
+    <div class="space1"></div>
+
+    <div class="main-container">
+        <div class="left">
+
+            <div class="lefthead">
+                <div class="left2head">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <div class="space3"></div>
+                    <div class="library">Your Library</div>
+                </div>
+            
+                <i class="fa fa-plus" id="plus" aria-hidden="true"></i>
+                <i class="fa fa-arrow-right" id="arrowright" aria-hidden="true"></i>
+            </div>
+
+            <div class="pill-container">
+                <button class="pill-btn">Playlists</button>
+                <button class="pill-btn">Artists</button>
+            </div>
+
+            <div class="searchleft">
+                <i class="fa fa-search" id="leftsearch" aria-hidden="true"></i>
+                <div class="recents">
+                    <p>Recents</p>
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <div class="recordlist">
+                <div class="record">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                </div>
+                <p>Playlist • This playlist is not available</p>
+            </div>
+
+            <div class="recordlist">
+                <div class="record">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                </div>
+                <div class="playlistname">
+                    <h3>My Playlist #1</h3>
+                    <p>Playlist • Mergen Bayasgalan</p>
+                </div>
+            </div>
+
+            <div class="recordlist">
+                <div class="recordimg">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Rokitbay_1st_album_he_edit_himself_that_photo.jpg?utm_source=mn.wikipedia.org&utm_campaign=index&utm_content=original" alt="">
+                </div>
+                <div class="playlistname">
+                    <h3>Rokit Bay</h3>
+                    <p>Artist</p>
+                </div>
+            </div>
+
+            <div class="recordlist">
+                <div class="recordimg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS2nDU48JM4jDniP54Nrw_z23mpSibFPntcaXYphtcLg&s=10" alt="">
+                </div>
+                <div class="playlistname">
+                    <h3>NIGO</h3>
+                    <p>Artist, producer</p>
+                </div>
+            </div>
+
+            <div class="recordlist">
+                <div class="recordimg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiKzyUyPrRY3JhRoCcXHtjqKM_M6veIoE56yASqSeElA&s=10" alt="">
+                </div>
+                <div class="playlistname">
+                    <h3>Pharell Williams</h3>
+                    <p>Artist, producer</p>
+                </div>
+            </div>
+
+            <div class="recordlist">
+                <div class="recordimg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJcI9SJt-SFfQ-5zSAjGzOksFeSzXykSJdc0U6-rdYHg&s" alt="">
+                </div>
+                <div class="playlistname">
+                    <h3>Ray W. Johnson</h3>
+                    <p>Artist, animator</p>
+                </div>
+            </div>
+
+            <div class="recordlist">
+                <div class="recordimg">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/1/17/Femtanyl_-_Man_Bites_Dog_album_cover.jpeg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled" alt="">
+                </div>
+                <div class="playlistname">
+                    <h3>femtanyl</h3>
+                    <p>Artist</p>
+                </div>
+            </div>
+
+            <div class="recordlist">
+                <div class="recordimg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5d84QU2X4qxWHUZq4QHYG0w6NnHr-K-fwBhjp_orQ6w&s=10" alt="">
+                </div>
+                <div class="playlistname">
+                    <h3>Teddy Ska</h3>
+                    <p>Band</p>
+                </div>
+            </div>
+
+            <div class="recordlist">
+                <div class="recordimg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkoWu1hzvBvXuQ01ClMRYW5R9YaGQYlAzA30XfvN_6kg&s" alt="">
+                </div>
+                <div class="playlistname">
+                    <h3>Daft Punk</h3>
+                    <p>Duo</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="space2"></div>
+
+        <div class="right">
+            <div class="space4"></div>
+
+            <div class="pill-container">
+                <button class="pill-btn-light">All</button>
+                <button class="pill-btn">Music</button>
+                <button class="pill-btn">Playlists</button>
+            </div>
+
+            <div id="explore">
+                Explore your genres
+            </div>
+
+            <div class="genre-list">
+                <div class="genres">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <div class="name">
+                        #mongolian hip-hop
+                    </div>
+                </div>
+
+                <div class="genres">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <div class="name">
+                        #ska punk
+                    </div>
+                </div>
+
+                <div class="genres">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <div class="name">
+                        #q-pop
+                    </div>
+                </div>
+
+                <div class="genres">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <div class="name">
+                        #rap
+                    </div>
+                </div>
+
+                <div class="genres">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <div class="name">
+                        #turkish hip-hop
+                    </div>
+                </div>
+
+                <div class="genres">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <div class="name">
+                        #hyperpop
+                    </div>
+                </div>
+
+                <div class="genres">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    <div class="name">
+                        #mongolian folk
+                    </div>
+                </div>
+            </div>
+
+            <div id="popular">
+                Popular artists
+            </div>
+
+            <div class="artistlist">
+                <div class="artist">
+                    <div class="artistimg">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Rokitbay_1st_album_he_edit_himself_that_photo.jpg?utm_source=mn.wikipedia.org&utm_campaign=index&utm_content=original" alt="">
+                    </div>
+                    <div class="artistinfo">
+                        <div class="artistname">
+                            Rokit Bay
+                        </div>
+                        <div class="isartist">
+                            Artist
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist">
+                    <div class="artistimg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS2nDU48JM4jDniP54Nrw_z23mpSibFPntcaXYphtcLg&s=10" alt="">
+                    </div>
+                    <div class="artistinfo">
+                        <div class="artistname">
+                            NIGO
+                        </div>
+                        <div class="isartist">
+                            Artist, producer
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist">
+                    <div class="artistimg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiKzyUyPrRY3JhRoCcXHtjqKM_M6veIoE56yASqSeElA&s=10" alt="">
+                    </div>
+                    <div class="artistinfo">
+                        <div class="artistname">
+                            Pharell Williams
+                        </div>
+                        <div class="isartist">
+                            Artist, producer
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist">
+                    <div class="artistimg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJcI9SJt-SFfQ-5zSAjGzOksFeSzXykSJdc0U6-rdYHg&s" alt="">
+                    </div>
+                    <div class="artistinfo">
+                        <div class="artistname">
+                            Ray W. Johnson
+                        </div>
+                        <div class="isartist">
+                            Artist, animator
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist">
+                    <div class="artistimg">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/1/17/Femtanyl_-_Man_Bites_Dog_album_cover.jpeg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled" alt="">
+                    </div>
+                    <div class="artistinfo">
+                        <div class="artistname">
+                            femtanyl
+                        </div>
+                        <div class="isartist">
+                            Artist
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist">
+                    <div class="artistimg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5d84QU2X4qxWHUZq4QHYG0w6NnHr-K-fwBhjp_orQ6w&s=10" alt="">
+                    </div>
+                    <div class="artistinfo">
+                        <div class="artistname">
+                            Teddy Ska
+                        </div>
+                        <div class="isartist">
+                            Band
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist">
+                    <div class="artistimg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkoWu1hzvBvXuQ01ClMRYW5R9YaGQYlAzA30XfvN_6kg&s" alt="">
+                    </div>
+                    <div class="artistinfo">
+                        <div class="artistname">
+                            Daft Punk
+                        </div>
+                        <div class="isartist">
+                            Duo
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</body>
+</html>
