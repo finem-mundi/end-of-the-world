@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        @font-face {
+            font-family: RoundBlancBold;
+            src: url(VDS_Bold_New.ttf);
+        }
+
+        body {
+            height: 100vh;
+            font-family: RoundBlancBold;
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .smiley {
+            width: 40rem;
+            height: 30rem;
+            background-color: red;
+            display: flex;
+        }
+
+        .face {
+            margin-top: 5rem;
+            border-radius: 50%;
+            width: 10rem;
+            height: 10rem;
+            background-color: red;
+        }
+
+        .eyes {
+            display: flex;
+            justify-content: center;
+            justify-content: space-evenly;
+        }
+
+        .eye {
+            margin-top: 1.5rem;
+            width: 1.5rem;
+            height: 3rem;
+            background-color: black;
+            border-radius: 50%;
+        }
+
+        .smile {
+            display: flex;
+            justify-content: center;
+            margin: 1rem;
+        }
+
+        .curve {
+            width: 80px;
+            height: 40px;
+            border-bottom: 5px solid black;
+            border-radius: 0 0 50px 50px;
+        }
+
+        .text {
+            margin: 3rem;
+        }
+
+        .text p {
+            color: white;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <div class="smiley">
+        <div class="face">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <div class="smile">
+                <div class="curve"></div>
+            </div>
+        </div> 
+        <div class="text">
+            <p>What would you like to ask?</p>
+        </div>
+    </div>
+</body>
+</html>
