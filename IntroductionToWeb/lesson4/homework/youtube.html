@@ -3,9 +3,673 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youtube</title>
+    <title>MeTube</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <style>
+
+
+        @font-face {
+            font-family: RoundBlanc;
+            src: url(../homework/VDS_Compensated_Light.ttf);
+        }
+
+
+        * {
+            font-family: RoundBlanc;
+            color: white;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            height: 100vh;
+            display: flex;
+            background-color: black;
+        }
+
+
+        .side {
+            width: 15%;
+            height: 100vh;
+            background-image: linear-gradient(black,  maroon);
+            border-right: 0.2rem solid rgb(50, 50, 50);
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+
+        .side h1 {
+            margin: 1rem;
+            margin-bottom: 0.75rem;
+            font-size: 2.5rem;
+        }
+
+
+        .select {
+            width: 9rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            border-radius: 7.5px;
+            margin-left: 1rem;
+            margin-top: 0.4rem;
+        }
+
+
+        .select:hover {
+            border: 0.1rem solid rgb(50, 50, 50);
+            background-image: linear-gradient(to right, maroon, black);
+            transition: 1s;
+        }
+
+
+        .select i {
+            margin-left: 0.4rem;
+            color: rgb(90, 90, 90);
+        }
+
+
+        .select p {
+            margin-left: 0.5rem;
+        }
+
+
+        .main {
+            width: 85%;
+            height: 100vh;
+            background-image: linear-gradient(black, maroon);
+            border-left: 0.2rem solid rgb(50, 50, 50);
+        }
+
+
+        .header {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        .search {
+            margin-top: 0.65rem;
+            width: 15rem;
+            height: 1.75rem;
+            border-radius: 1.75rem;
+            border: 0.1rem solid rgb(50, 50, 50);
+            margin-left: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+
+        .side h3 {
+            margin-top: 0.5rem;
+            margin-left: 0.75rem;
+            font-size: 0.75rem;
+        }
+
+
+        .side p {
+            font-size: 0.75rem;
+            color: rgb(180, 180, 180);
+        }
+
+
+        .search i {
+            color: maroon;
+        }
+
+
+        .search p {
+            color: rgb(90, 90, 90);
+        }
+
+
+        .headicons {
+            margin-top: 0.9rem;
+            margin-right: 0.75rem;
+        }
+
+
+        .headicons i {
+            color: maroon;
+            font-size: 1.5rem;
+            margin-left: 0.2rem;
+            margin-right: 0.2rem;
+        }
+
+        .headicons i:hover {
+            color: rgb(175, 0, 0);
+            transition: 1s;
+        }
+
+
+        .genres {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .genres p {
+            margin-left: 0.4rem;
+            margin-right: 0.4rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+
+        .genres p:hover {
+            color: red;
+            transition: 0.75s;
+        }
+
+
+        #selected {
+            color: maroon;
+        }
+
+
+        .footer {
+            width: 100%;
+            height: 80vh;
+            display: grid;
+            justify-content: space-evenly;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            overflow-y: auto;
+        }
+
+
+        .video {
+            margin: 1rem;
+            width: 100%;
+            max-width: 17.75rem;
+            height: 13rem;
+            border-radius: 10px;
+            background-image: linear-gradient(to bottom, red, maroon, black);
+        }
+
+        .video:hover {
+            transform: scale(1.05);
+            transform: translate(0rem, -1rem);
+            transition: 1s;
+        }
+
+
+        .video p {
+            font-size: 0.6rem;
+            margin-top: 0.25rem;
+        }
+
+
+        .video img {
+            width: 17.75rem;
+            height: 9rem;
+            border-radius: 10px;
+        }
+
+
+        .info {
+            display: flex;
+        }
+
+
+        .profile {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            margin-top: 0.25rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+
+        .profile img {
+            width: 2rem;
+            height: 2rem;
+        }
+
+
+        #important {
+            font-size: 0.9rem;
+        }
+
+
+    </style>
+
+
 </head>
 <body>
-    
+    <div class="side">
+        <h1>MeTube</h1>
+        <div class="select" id="home">
+            <i class="fa-solid fa-house-user"></i>
+            <p>Home</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-brands fa-microblog"></i>
+            <p>Shorts</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-brands fa-youtube"></i>
+            <p>Subscriptions</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-solid fa-user-pen"></i>
+            <p>Channel</p>
+        </div>
+
+
+        <h3>My channel</h3>
+
+
+        <div class="select">
+            <i class="fa-solid fa-folder-open"></i>
+            <p>Library</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <p>History</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-solid fa-video"></i>
+            <p>Your Videos</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-solid fa-paper-plane"></i>
+            <p>Watch later</p>
+        </div>
+
+
+        <h3>Subscriptions</h3>
+
+
+        <div class="select">
+            <i class="fa-solid fa-user-pen"></i>
+            <p>Vsauce</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-solid fa-user-pen"></i>
+            <p>xkcd's What If?</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-solid fa-user-pen"></i>
+            <p>MrRoflWaffles</p>
+        </div>
+
+
+        <div class="select">
+            <i class="fa-solid fa-user-pen"></i>
+            <p>Bro Code</p>
+        </div>
+
+
+    </div>
+    <div class="main">
+        <div class="header">
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>Search...</p>
+            </div>
+            <div class="headicons">
+                <i class="fa-solid fa-upload" id="upload"></i>
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-circle-user" id="user"></i>
+            </div>
+        </div>
+        <div class="genres">
+            <p id="selected">All</p>
+            <p>Subscriptions</p>
+            <p>Music</p>
+            <p>Live</p>
+            <p>Charts</p>
+            <p>Gaming</p>
+            <p>Podcasts</p>
+        </div>
+        <div class="footer">
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/HD13eq_Pmp8/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Learn HTML in 1 hour</p><p>Bro Code</p><p>345K views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/t4gc4E8A7fk/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/HiEDja1fEboSOA3yYAB08K4f9SstRGQe22Bmx8ymsPGEy-iteb-w72pwdC2eNQSAaqspp3X50Q=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Die Rise: Ultimate Guide</p><p>Ace of Spades</p><p>191K views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/zM6Mzis2naE/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_lE4gFIA0ZiwaWvsyVZq7np0OA5SJ94ia_WT3lbAVzF7T8=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Tips and Tricks on Der Eisendrache!</p><p>MrRoflWaffles</p><p>1.2M views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/RgBYohJ7mIk/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/OWt_mjwWE0M5URS_HfYC6-4KsJdiodRahjLDfFViTOx_e3D_b8aWHQl_AyiE98VUY7OWNY61mg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">What if you tried to print Wikipedia?</p><p>xkcd's What If?</p><p>3M views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/HyHNuVaZJ-k/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/4dzF1bVcaSuwNOsa63GprfaUnpmkCecoS9NYUM_QHIRwcpxfTUtZdAVAa5ic45Wh7kXPwl7y8g=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Gorillaz - Feel Good Inc. (Official Video)</p><p>Gorillaz</p><p>1B views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/wRNinF7YQqQ/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Learn CSS in 1 hour</p><p>Bro Code</p><p>2.4M views • 3 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/HD13eq_Pmp8/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Learn HTML in 1 hour</p><p>Bro Code</p><p>345K views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/t4gc4E8A7fk/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/HiEDja1fEboSOA3yYAB08K4f9SstRGQe22Bmx8ymsPGEy-iteb-w72pwdC2eNQSAaqspp3X50Q=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Die Rise: Ultimate Guide</p><p>Ace of Spades</p><p>191K views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/zM6Mzis2naE/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_lE4gFIA0ZiwaWvsyVZq7np0OA5SJ94ia_WT3lbAVzF7T8=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Tips and Tricks on Der Eisendrache!</p><p>MrRoflWaffles</p><p>1.2M views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/RgBYohJ7mIk/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/OWt_mjwWE0M5URS_HfYC6-4KsJdiodRahjLDfFViTOx_e3D_b8aWHQl_AyiE98VUY7OWNY61mg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">What if you tried to print Wikipedia?</p><p>xkcd's What If?</p><p>3M views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/HyHNuVaZJ-k/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/4dzF1bVcaSuwNOsa63GprfaUnpmkCecoS9NYUM_QHIRwcpxfTUtZdAVAa5ic45Wh7kXPwl7y8g=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Gorillaz - Feel Good Inc. (Official Video)</p><p>Gorillaz</p><p>1B views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/wRNinF7YQqQ/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Learn CSS in 1 hour</p><p>Bro Code</p><p>2.4M views • 3 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/HD13eq_Pmp8/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Learn HTML in 1 hour</p><p>Bro Code</p><p>345K views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/t4gc4E8A7fk/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/HiEDja1fEboSOA3yYAB08K4f9SstRGQe22Bmx8ymsPGEy-iteb-w72pwdC2eNQSAaqspp3X50Q=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Die Rise: Ultimate Guide</p><p>Ace of Spades</p><p>191K views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/zM6Mzis2naE/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_lE4gFIA0ZiwaWvsyVZq7np0OA5SJ94ia_WT3lbAVzF7T8=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Tips and Tricks on Der Eisendrache!</p><p>MrRoflWaffles</p><p>1.2M views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/RgBYohJ7mIk/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/OWt_mjwWE0M5URS_HfYC6-4KsJdiodRahjLDfFViTOx_e3D_b8aWHQl_AyiE98VUY7OWNY61mg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">What if you tried to print Wikipedia?</p><p>xkcd's What If?</p><p>3M views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/HyHNuVaZJ-k/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/4dzF1bVcaSuwNOsa63GprfaUnpmkCecoS9NYUM_QHIRwcpxfTUtZdAVAa5ic45Wh7kXPwl7y8g=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Gorillaz - Feel Good Inc. (Official Video)</p><p>Gorillaz</p><p>1B views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/wRNinF7YQqQ/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Learn CSS in 1 hour</p><p>Bro Code</p><p>2.4M views • 3 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/HD13eq_Pmp8/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Learn HTML in 1 hour</p><p>Bro Code</p><p>345K views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/t4gc4E8A7fk/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/HiEDja1fEboSOA3yYAB08K4f9SstRGQe22Bmx8ymsPGEy-iteb-w72pwdC2eNQSAaqspp3X50Q=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Die Rise: Ultimate Guide</p><p>Ace of Spades</p><p>191K views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/zM6Mzis2naE/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_lE4gFIA0ZiwaWvsyVZq7np0OA5SJ94ia_WT3lbAVzF7T8=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Tips and Tricks on Der Eisendrache!</p><p>MrRoflWaffles</p><p>1.2M views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/RgBYohJ7mIk/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/OWt_mjwWE0M5URS_HfYC6-4KsJdiodRahjLDfFViTOx_e3D_b8aWHQl_AyiE98VUY7OWNY61mg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">What if you tried to print Wikipedia?</p><p>xkcd's What If?</p><p>3M views • 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/HyHNuVaZJ-k/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/4dzF1bVcaSuwNOsa63GprfaUnpmkCecoS9NYUM_QHIRwcpxfTUtZdAVAa5ic45Wh7kXPwl7y8g=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Gorillaz - Feel Good Inc. (Official Video)</p><p>Gorillaz</p><p>1B views • 10 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="video">
+                <img src="https://i.ytimg.com/vi/wRNinF7YQqQ/maxresdefault.jpg" alt="">
+                <div class="info">
+                    <div class="profile">
+                        <img src="https://yt3.googleusercontent.com/ytc/AIdro_mPFVsxROj1dOtTWc9iNBwDYV4z42Q8LPokBSewiW9pCSg=s160-c-k-c0x00ffffff-no-rj" alt="">
+                    </div>
+                    <div class="name">
+                        <p id="important">Learn CSS in 1 hour</p><p>Bro Code</p><p>2.4M views • 3 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
+
