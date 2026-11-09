@@ -33,7 +33,7 @@
             border-radius: 50%;
             width: 10rem;
             height: 10rem;
-            background-color: yellow;
+            background-image: linear-gradient(to bottom, tomato, red, red, red, maroon);
         }
 
         .eyes {
@@ -71,6 +71,31 @@
             color: white;
             margin: 0;
         }
+
+        .ask {
+            margin: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .query input {
+            width: 15rem;
+            font-family: RoundBlancBold;
+            background-color: rgb(255, 50, 50);
+            border-radius: 0.25rem;
+        }
+
+        .button button {
+            width: 30%;
+            margin-top: 3rem;
+            margin-left: 35%;
+            font-family: RoundBlancBold;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            border-radius: 0.25rem;
+        }
         
     </style>
 
@@ -87,8 +112,19 @@
             </div>
         </div> 
         <div class="text">
-            <p>What would you like to ask?</p>
+            <p>Hello, I'm Chatty! <br> What would you like to ask?</p>
+        </div>
+        <div class="ask">
+            <div class="query">
+                <input type="text" spellcheck="true">
+            </div>
+            <div class="button">
+                <button id="ask">Ask away!</button>
+            </div>
         </div>
     </div>
+
+    
+
 </body>
 </html>
