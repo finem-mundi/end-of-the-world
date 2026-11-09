@@ -14,6 +14,7 @@
 
         body {
             height: 100vh;
+            margin: 0;
             font-family: RoundBlancBold;
             background-color: black;
             overflow: hidden;
@@ -22,10 +23,9 @@
         }
 
         .smiley {
-            width: 40rem;
-            height: 30rem;
-            background-color: red;
             display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .face {
@@ -38,7 +38,6 @@
 
         .eyes {
             display: flex;
-            justify-content: center;
             justify-content: space-evenly;
         }
 
@@ -64,11 +63,13 @@
         }
 
         .text {
-            margin: 3rem;
+            margin-top: 1.5rem;
+            text-align: center;
         }
 
         .text p {
             color: white;
+            margin: 0;
         }
         
     </style>
