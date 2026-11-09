@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chatty</title>
 
     <style>
-
         @font-face {
             font-family: RoundBlancBold;
             src: url(VDS_Bold_New.ttf);
@@ -15,7 +14,7 @@
         body {
             height: 100vh;
             margin: 0;
-            font-family: RoundBlancBold;
+            font-family: RoundBlancBold, sans-serif;
             background-color: black;
             overflow: hidden;
             display: flex;
@@ -26,6 +25,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .face:hover {
+            transform: rotate(360deg);
+            transition: 1s ease-in-out;
         }
 
         .face {
@@ -76,29 +80,45 @@
             margin: 3rem;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
         }
 
         .query input {
-            width: 15rem;
-            font-family: RoundBlancBold;
-            background-color: rgb(255, 50, 50);
+            width: 20rem;
+            height: 2rem;
+            font-family: RoundBlancBold, sans-serif;
+            font-size: 1.2rem;
+            background-color: rgb(255, 75, 75);
+            border: none;
             border-radius: 0.25rem;
+            color: white;
+            padding: 0 0.5rem;
         }
 
         .button button {
-            width: 30%;
-            margin-top: 3rem;
-            margin-left: 35%;
+            margin-top: 2rem;
+            padding: 0.5rem 1rem;
             font-family: RoundBlancBold;
-            display: flex;
-            justify-content: center;
-            align-content: center;
+            font-size: 1rem;
             border-radius: 0.25rem;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        
-    </style>
 
+        .button button:hover {
+            background-color: rgb(255, 150, 150);
+        }
+
+        #text {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 22rem;
+        }
+    </style>
 </head>
 <body>
     <div class="smiley">
@@ -116,15 +136,45 @@
         </div>
         <div class="ask">
             <div class="query">
-                <input type="text" spellcheck="true">
+                <input type="text" spellcheck="true" id="question" placeholder="Type here...">
             </div>
             <div class="button">
-                <button id="ask">Ask away!</button>
+                <button onclick="ask()">Ask away!</button>
             </div>
+
+            <h1 style="color: white;" id="text"></h1>
         </div>
     </div>
 
-    
+    <script>
+        function ask() {
+            const inputVal = document.getElementById("question").value.trim();
+            const responseText = document.getElementById("text");
 
+            if (inputVal === 'What is the meaning of life?') {
+                responseText.innerHTML = "To live a life you'll remember after death.";
+            }
+
+            if (inputVal === 'What is two plus two?') {
+                responseText.innerHTML = "It's four.";
+            }
+
+            if (inputVal === 'Is Dashnyam handsome?') {
+                responseText.innerHTML = "Yes! Can you give me his phone number?";
+            }
+
+            if (inputVal === 'How do I make the perfect onion ring?') {
+                responseText.innerHTML = "You can't. Onions are disgusting.";
+            }
+
+            if (inputVal === 'Can you recite the entire Bee Movie script?') {
+                responseText.innerHTML = "I'm sorry, but the entire script is too large to render. Here's the first sentence instead. According to all known laws of aviation, there is no way a bee should be able to fly.";
+            }
+
+            if (inputVal === 'What is Alternating Case?') {
+                responseText.innerHTML = "hOw aM I SuPpOsEd tO KnOw?!";
+            }
+        }
+    </script>
 </body>
 </html>
