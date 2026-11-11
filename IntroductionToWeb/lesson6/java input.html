@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Input</title>
+
+    <style>
+
+    @font-face {
+            font-family: SpotIt;
+            src: url(../balkenschrift-rounded-regular-1-0.ttf);
+        }
+
+        h2 {
+            font-family: SpotIt;
+        }
+
+        input {
+            font-family: SpotIt;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <input type="text" id="num1"> <br>
+    <input type="text" id="num2"> <br>
+    <input type="text" id="num3"> <br>
+    <input type="text" id="num4"> <br>
+    <input type="text" id="num5"> <br>
+    <input type="text" id="num6"> <br>
+
+    <button onclick="calculateGrade()">1. дүнгийн тооцоолуур</button> <br> <br>
+    <h2 id="text1">Answer for Question 1</h2>
+    <h2 id="text2">Answer for Question 1</h2>
+    <br>
+
+    <input type="text" id="prime"> <br>
+    <button onclick="isPrime()">2. анхны тоо олох</button>
+    <h2 id="text3">Answer for Question 2</h2>
+    <h2 id="text4">Answer for Question 2</h2>
+
+    <script>
+
+        let scores = "";
+        let count = 0;
+
+        function getGrade(score) {
+            if (score > 89) {
+
+                scores += score + " => A, ";
+
+            } else if (score > 79) {
+
+                scores += score + " => B, ";
+
+            } else if (score > 69) {
+
+                scores += score + " => C, ";
+
+            } else {
+                
+                scores += score + " => F, ";
+            }
+
+            isPassed(score);
+        }
+
+        function isPassed(score) {
+            if (score > 69) {
+                count++;
+            }
+        }
+
+        function calculateGrade() {
+            scores = "";
+
+            const array = [
+                document.getElementById("num1").value.trim(),
+                document.getElementById("num2").value.trim(),
+                document.getElementById("num3").value.trim(),
+                document.getElementById("num4").value.trim(),
+                document.getElementById("num5").value.trim(),
+                document.getElementById("num6").value.trim()
+            ];
+
+            for (let i = 0; i < array.length; i++) {
+                getGrade(Number(array[i]));
+            }
+
+            const text1 = document.getElementById("text1");
+            const text2 = document.getElementById("text2");
+
+            text1.innerHTML = scores.slice(0, -2);
+
+            text2.innerHTML = "Number of passed students: " + count;
+        }
+
+
+        let count2 = 0;
+        let primes = "";
+        const text3 = document.getElementById("text3");
+        const text4 = document.getElementById("text4");
+
+        function isPrime() {
+            const primemax = Number(document.getElementById("prime").value);
+            for (let n = 1; n <= primemax; n++) {
+                let primecount = 0;
+                for (let o = 1; o <= n; o++) {
+                    if (n % o === 0) {
+                        primecount++;
+                    }
+                }
+
+                if (primecount == 2) {
+                    count2++;
+                    primes += n + ", ";
+                }
+            }
+            text3.innerHTML = primes.slice(0, -2);
+            text4.innerHTML = "Number of prime numbers under " + primemax + " : " + count2;
+        }
+
+    </script>
+</body>
+</html>
