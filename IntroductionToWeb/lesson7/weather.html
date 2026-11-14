@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Weather App</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+      background: #f0f4f8;
+    }
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      width: 65%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 8px 12px;
+      border: none;
+      background: #0077ff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #result { margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Weather Finder</h2>
+  <form id="weatherForm">
+    <input type="text" id="cityInput" placeholder="Enter city..." required>
+    <button type="submit">Search</button>
+  </form>
+  <div id="result"></div>
+</div>
+
+<script>
+  const form = document.getElementById('weatherForm');
+  const resultDiv = document.getElementById('result');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const city = document.getElementById('cityInput').value.trim();
+    resultDiv.textContent = 'Loading...';
+
+    try {
+      // 1. Convert city name to latitude and longitude
+      const geoRes = await fetch(`https://open-meteo.com{encodeURIComponent(city)}&count=1`);
+      const geoData = await geoRes.json();
+
+      if (!geoData.results) {
+        resultDiv.textContent = 'City not found.';
+        return;
+      }
+
+      const { latitude, longitude, name, country } = geoData.results[0];
+
+      // 2. Fetch current weather for those coordinates
+      const weatherRes = await fetch(`https://open-meteo.com{latitude}&longitude=${longitude}&current_weather=true`);
+      const weatherData = await weatherRes.json();
+      const { temperature, windspeed } = weatherData.current_weather;
+
+      // 3. Display the results
+      resultDiv.innerHTML = `
+        <h3>${name}, ${country}</h3>
+        <p><strong>Temperature:</strong> ${temperature}°C</p>
+        <p><strong>Wind Speed:</strong> ${windspeed} km/h</p>
+      `;
+    } catch (error) {
+      resultDiv.textContent = 'Error fetching weather data.';
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+
+    <style>
+
+        @font-face {
+            font-family: Balken;
+            src: url(../balkenschrift-rounded-regular-1-0.ttf);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: skyblue;
+        }
+
+        input {
+            background-color: rgb(70, 184, 255);
+            width: 10rem;
+            height: 4rem;
+            font-size: 4rem;
+            font-family: Balken;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-family: Balken;
+        }
+
+        button {
+            margin-top: 1rem;
+            background-color: dodgerblue;
+            width: 5rem;
+            height: 2rem;
+            font-size: 1rem;
+            font-family: Balken;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: dodgerblue;
+            font-family: Balken;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="main">
+        <h1>Number Guessing Game</h1>
+        <input type="number" id="num"> <br>
+        <button onclick="num()">Press me</button>
+        <h2 id="answer"></h2>
+    </div>
+</body>
+
+<script>
+
+    const random = Number(Math.floor(Math.random() * 100) + 1);
+    console.log(random);
+    let count = 1;
+    const text = document.getElementById("answer");
+
+    function num() {
+        let numb = Number(document.getElementById("num").value);
+
+        if (numb == random) {
+            text.innerHTML = "Correct! It took you " + count + " tries!";
+        }
+        else {  
+            text.innerHTML = "Please try again. Wrong guesses: " + count;
+            count = count + 1;
+        }
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+
+        @font-face {
+            font-family: RoundBlanc;
+            src: url(../VDS_Compensated_Light.ttf);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            background-image: radial-gradient(green, limegreen);
+        }
+
+        h1, h2, label, input, button {
+            font-family: RoundBlanc;
+            text-align: center;
+        }
+
+        button {
+            font-size: large;
+            margin-bottom: 3rem;
+        }
+
+        .main {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        input {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .question {
+            width: 20rem;
+        }
+
+        a {
+            font-family: RoundBlanc;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="main">
+        <h1>Hello dear user. I am the Impossible Quiz Master, and no one can never pass my quiz! Mwahahaha! <br> I suggest you to click away, but if you are really stupid or brave, go ahead and try!</h1>
+        <h2 id="answer"></h2>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ910Bh_PAYThEVnxgxfU9Ufm9L6PLCpKe8nQAc1SmuBD4pPboDlAuzgR0T&s=10">
+
+
+        <div class="question">
+            <h2>1. What is the capital city of São Tomé and Príncipe?</h2>
+            <label><input type="radio" name="q1"> Timbuktu</label> <br>
+            <label><input type="radio" name="q1"> Nouakchott</label> <br>
+            <label><input type="radio" name="q1" id="q13"> São Tomé</label> <br>
+            <label><input type="radio" name="q1"> Asmara</label>
+        </div>
+
+        <div class="question">
+            <h2>2. In the South Park episode "Fun with Veal", how do the boys greatly reduce the consumption of veal?</h2>
+            <label><input type="radio" name="q2" id="q21"> By changing veal to tortured baby cow</label> <br>
+            <label><input type="radio" name="q2"> By accidentally killing the veal</label> <br>
+            <label><input type="radio" name="q2"> By killing the farmer who sells them</label> <br>
+            <label><input type="radio" name="q2"> By letting Cartman eat the entire supply</label>
+        </div>
+
+        <div class="question">
+            <h2>3. What is Perchance AI most infamously known for?</h2>
+            <label><input type="radio" name="q3"> Servers crashing</label> <br>
+            <label><input type="radio" name="q3"> Scam websites</label> <br>
+            <label><input type="radio" name="q3"> Constant ads</label> <br>
+            <label><input type="radio" name="q3" id="q34"> Little to no image generation restrictions</label>
+        </div>
+        
+        <br>
+        <br>
+
+        <button onclick="check()">Check Answers</button>
+        <button type="button" onclick="window.location.reload()">Reload Page</button>
+    </div>
+
+    <script>
+
+        const btn1 = document.getElementById("q13");
+        const btn2 = document.getElementById("q21");
+        const btn3 = document.getElementById("q34");
+        const text = document.getElementById("answer");
+
+        let count = 0;
+        
+        function check() {
+            if (btn1.checked && btn2.checked && btn3.checked) {
+                text.textContent = "What? You passed my test?! I bet you cheated!";
+                text.style.color = "darkgreen";
+                setTimeout(() => {
+                alert("Now, try again without cheating this time!");
+                window.location.reload();
+                }, 2000);
+
+            } else {
+                text.textContent = "Haha! You failed!";
+                text.style.color = "darkred";
+            }
+    }
+
+    </script>
+
+</body>
+</html>
