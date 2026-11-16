@@ -8,19 +8,49 @@
     <style>
 
         @font-face {
-            font-family: Nature;
-            src: url(../balkenschrift-rounded-regular-1-0.ttf);
+            font-family: TallMovieFat;
+            src: url(tall-films/Tall\ Films\ Expanded.ttf);
         }
 
-        * {
-            font-family: Nature;
+        @font-face {
+            font-family: TallMovie;
+            src: url(tall-films/Tall\ Film\ Fine.ttf);
+        }
+
+        @font-face {
+            font-family: Verdant;
+            src: url(The\ Foregen\ Rough\ One.ttf);
+        }
+
+        .fat {
+            font-family: TallMovieFat;
+            margin: 0rem;
+        }
+
+        .thin {
+            font-family: TallMovie;
+            margin: 0rem;
+        }
+
+        .forest {
+            font-family: Verdant;
+            margin: 0rem;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
         }
 
     </style>
 
 </head>
 <body>
-    <h1>Welcome to Gazillion Predators. Hope you're hungry for carnage.</h1>
-    <h2>Life is scarier than death.</h2>
+    <h1 class="fat">Gazillion Predators</h1>
+    <h2 class="thin">Welcome to Gazillion Predators. Hope you're hungry for carnage.</h2>
+    <h6 class="thin">Primal Outbreak is a 3D action shoot-'em-up game and the first installment of the Gazillion Predators series.</h6>
+
 </body>
 </html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+    <style>
+
+    @font-face {
+        font-family: Rundt;
+        src: url(arialroundedmtprocyr_bold.otf);
+    }
+
+    h1, h2, ul, button {
+        font-family: Rundt;
+    }
+
+    button {
+        width: 5rem;
+        height: 5rem;
+        margin: 1rem;
+        background-color: rgb(60, 174, 255);
+        border-radius: 20%;
+        transition: transform 0.1s ease-in-out, background-color 0.1s ease-in-out;
+    }
+
+    button:hover {
+        background-color: dodgerblue;
+        transform: scale(1.05);
+    }
+
+    button:active {
+        background-color: rgb(0, 114, 195);
+        transition: 0.1s ease-in-out;
+    }
+
+    </style>
+
+</head>
+<body>
+    <button id="text">Add Textbook (+15000)</button>
+    <button id="note">Add Notebook (+1500)</button>
+    <button id="bag">Add Backpack (+45000)</button> <br>
+    <button id="minustext">Remove Textbook (-15000)</button>
+    <button id="minusnote">Remove Notebook (-1500)</button>
+    <button id="minusbag">Remove Backpack (-45000)</button> <br>
+    <h1 id="price"></h1>
+    <h2 id="number"></h2>
+    <ul id="list"></ul>
+</body>
+
+    <script>
+    const price = document.getElementById("price");
+    const num = document.getElementById("number");
+
+    const button1 = document.getElementById("text");
+    button1.addEventListener("click", text);
+    let textbook = 0;
+
+    const button2 = document.getElementById("note");
+    button2.addEventListener("click", note);
+    let notebook = 0;
+
+    const button3 = document.getElementById("bag");
+    button3.addEventListener("click", back);
+    let backpack = 0;
+
+    const button01 = document.getElementById("minustext");
+    button01.addEventListener("click", minustext);
+
+    const button02 = document.getElementById("minusnote");
+    button02.addEventListener("click", minusnote);
+
+    const button03 = document.getElementById("minusbag");
+    button03.addEventListener("click", minusback);
+
+    const button4 = document.getElementById("button");
+    button4.addEventListener("click", cashout);
+
+    function text() {
+        textbook = textbook + 1;
+        cashout();
+    }
+
+    function note() {
+        notebook = notebook + 1;
+        cashout();
+    }
+
+    function back() {
+        backpack = backpack + 1;
+        cashout();
+    }
+
+    function minustext() {
+        textbook = textbook - 1;
+        cashout();
+    }
+
+    function minusnote() {
+        notebook = notebook - 1;
+        cashout();
+    }
+
+    function minusback() {
+        backpack = backpack - 1;
+        cashout();
+    }
+
+    function cashout() {
+        if (textbook < 0 || notebook < 0 || backpack < 0) {
+            alert("Invalid number!");
+            if (textbook < 0) {
+                textbook = 0;
+            }
+            if (notebook < 0) {
+                notebook = 0;
+            }
+            if (backpack < 0) {
+                backpack = 0;
+            }
+        }
+        else {
+            price.innerHTML = "Total price: " + String(textbook * 15000 + notebook * 1500 + backpack * 45000);
+            console.log("Total price: " + price.innerHTML);
+            number.innerHTML = "Number of products: " + String(textbook + notebook + backpack);
+            console.log("Number of products: " + number.innerHTML);
+
+            const list = document.getElementById("list");
+            list.innerHTML = "";
+            const li = document.createElement("li");
+            li.textContent = textbook + " textbooks, " + notebook + " notebooks, " + backpack + " backpacks.";
+            list.appendChild(li);
+        }
+    }
+
+    </script>
+
+</html>
