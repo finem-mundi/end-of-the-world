@@ -78,7 +78,7 @@
     </style>
 
 </head>
-<body onload="myFunction()" id="body">
+<body onload="myFunction()" id="body" style="overflow: hidden;">
     <div id="loader">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkDIodKRxwTEW0PIRZonM0Z68axwJLsNfHPilhqJvOK_pOFFrM3ZW_kIM&s=10">
         <h1 class="text-6xl text-blue-800" style="font-family: Milky;">Loading...</h1>
@@ -157,15 +157,17 @@
             </div>
         </div>
 
-        <h1 class="text-white text-5xl" style="font-family: Milky; margin: 2rem;">Our Smash Hit Albums!</h1>
+        <!-- Singles -->
+
+        <h1 class="text-white text-5xl" style="font-family: Milky; margin: 2rem;">Super Singles!</h1>
 
         <div class="flex justify-center gap-4 flex-wrap w-full">
             <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
                 <img src="https://www.theingroove.com/cdn/shop/products/original_156c6f12-124f-42da-8efe-b33f2ef23535.jpg?v=1646792553" class="rounded-lg w-full">
-                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Nevermind</h3>
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Smells Like Teen Spirit</h3>
                 <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Nirvana</h3>
                 <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">29.99$</p>
-                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+                <button class="mt-3 w-full bg-blue-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-blue-800" style="font-family: Milky;">Purchase</button>
             </div>
 
             <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
@@ -225,6 +227,7 @@
         document.getElementById("loader").style.display = "none";
         document.getElementById("body").style.backgroundColor = "white";
         document.getElementById("body").style.backgroundImage = "linear-gradient(black, navy)";
+        document.getElementById("body").style.overflow = "scroll";
     }
 
 </script>
