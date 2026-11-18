@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back from the Ninties</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        /* Typefaces */
+
+        @font-face {
+            font-family: VDSFat;
+            src: url(vds/VDS_Bold_New.ttf);
+        }
+
+        @font-face {
+            font-family: VDSLight;
+            src: url(vds/VDS_Compensated_Light.ttf);
+        }
+
+        @font-face {
+            font-family: VDSNeue;
+            src: url(vds/VDS_New.ttf);
+        }
+
+        @font-face {
+            font-family: VDSThin;
+            src: url(vds/VDS_Thin.ttf);
+        }
+
+        @font-face {
+            font-family: Milky;
+            src: url(MilkyWell.ttf);
+        }
+
+        /* Main design */
+
+        * {
+            background-image: linear-gradient();
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            display: grid;
+            place-items: center;
+            background-color: black;
+            background-image: none;
+        }
+
+        #loader {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #loader h1 {
+            margin: 5rem;
+        }
+
+        .header {
+            width: 100%;
+            height: 15vh;
+            display: flex;
+            justify-content: center;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+    </style>
+
+</head>
+<body onload="myFunction()" id="body">
+    <div id="loader">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkDIodKRxwTEW0PIRZonM0Z68axwJLsNfHPilhqJvOK_pOFFrM3ZW_kIM&s=10">
+        <h1 class="text-6xl text-blue-800" style="font-family: Milky;">Loading...</h1>
+    </div>
+
+    <div class="header">
+        <div class="flex-col items-center">
+            <h1 class="text-5xl text-[rgb(255,255,255)]" style="font-family: Milky;">Back from the '90s</h1>
+            <h1 class="text-3xl text-[rgb(255,255,255)]" style="font-family: Milky;">Where a Millenial can reminisce!</h1>
+        </div>
+        <div class="w-[60rem] h-[4rem] rounded-full border-2 border-[rgb(255,255,255)] bg-[rgb(0,0,0)]/0 flex items-center">
+            <i class="fa fa-search text-white text-[2rem] transition-transform duration-1500 ease hover:rotate-[360deg]" style="margin: 1rem;" aria-hidden="true"></i>
+            <h1 class="text-2xl text-[rgb(255,255,255)] hover:text-[rgb(200,200,200)] cursor-pointer" style="font-family: VDSFat;">Search...</h1>
+        </div>
+    </div>
+    <div class="flex w-[100%] h-[10vh] justify-center">
+        <p class="text-2xl text-white transition-all duration-1000 ease hover:text-[rgb(0,0,255)] hover:scale-110 cursor-pointer" style="margin-right: 1.5rem; font-family: Milky;">Nirvana</p>
+        <p class="text-2xl text-white transition-all duration-1000 ease hover:text-[rgb(0,0,255)] hover:scale-110 cursor-pointer" style="margin-right: 1.5rem; font-family: Milky;">Pearl Jam</p>
+        <p class="text-2xl text-white transition-all duration-1000 ease hover:text-[rgb(0,0,255)] hover:scale-110 cursor-pointer" style="margin-right: 1.5rem; font-family: Milky;">Red Hot Chili Peppers</p>
+        <p class="text-2xl text-white transition-all duration-1000 ease hover:text-[rgb(0,0,255)] hover:scale-110 cursor-pointer" style="margin-right: 1.5rem; font-family: Milky;">Blur</p>
+        <p class="text-2xl text-white transition-all duration-1000 ease hover:text-[rgb(0,0,255)] hover:scale-110 cursor-pointer" style="margin-right: 1.5rem; font-family: Milky;">Blink-182</p>
+        <p class="text-2xl text-white transition-all duration-1000 ease hover:text-[rgb(0,0,255)] hover:scale-110 cursor-pointer" style="margin-right: 1.5rem; font-family: Milky;">Oasis</p>
+        <p class="text-2xl text-white transition-all duration-1000 ease hover:text-[rgb(0,0,255)] hover:scale-110 cursor-pointer" style="font-family: Milky;">Green Day</p>
+    </div>
+    <div class="flex w-full h-[75vh] flex-col items-center overflow-y-auto">
+
+        <h1 class="text-white text-5xl" style="font-family: Milky; margin-bottom: 2rem;">Our Smash Hit Albums!</h1>
+
+        <div class="flex justify-center gap-4 flex-wrap w-full">
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://www.theingroove.com/cdn/shop/products/original_156c6f12-124f-42da-8efe-b33f2ef23535.jpg?v=1646792553" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Nevermind</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Nirvana</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">29.99$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Enema of the State</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Blink-182</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">41.46$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/df/RedHotChiliPeppersCalifornication.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Californication</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Red Hot Chili Peppers</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">35.16$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://i.scdn.co/image/ab67616d0000b27334cbf7013afccc7df67fa43f" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Blur: The Best Of</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Blur</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">10.20$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://i.scdn.co/image/ab67616d0000b27308a1b1e0674086d3f1995e1b" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">American Idiot</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Green Day</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">31.48$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf6BSFeNxNMSKKOjKsPD4LWFMPOxKgHP9XO76JSUgrqw&s=10" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Pearl Jam</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Pearl Jam</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">12.52$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+        </div>
+
+        <h1 class="text-white text-5xl" style="font-family: Milky; margin-bottom: 2rem;">Our Smash Hit Albums!</h1>
+
+        <div class="flex justify-center gap-4 flex-wrap w-full">
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://www.theingroove.com/cdn/shop/products/original_156c6f12-124f-42da-8efe-b33f2ef23535.jpg?v=1646792553" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Nevermind</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Nirvana</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">29.99$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Blink-182_-_Enema_of_the_State_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Enema of the State</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Blink-182</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">41.46$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/df/RedHotChiliPeppersCalifornication.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Californication</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Red Hot Chili Peppers</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">35.16$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://i.scdn.co/image/ab67616d0000b27334cbf7013afccc7df67fa43f" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Blur: The Best Of</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Blur</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">10.20$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://i.scdn.co/image/ab67616d0000b27308a1b1e0674086d3f1995e1b" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">American Idiot</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Green Day</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">31.48$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg w-64 h-[23rem]" style="padding: 0.5rem; margin-right: 1rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf6BSFeNxNMSKKOjKsPD4LWFMPOxKgHP9XO76JSUgrqw&s=10" class="rounded-lg w-full">
+                <h3 class="text-[rgb(0,0,0)] text-2xl" style="font-family: Milky; margin-left: 0.25rem;">Pearl Jam</h3>
+                <h3 class="text-[rgb(100,100,100)] text-1xl" style="font-family: VDSNeue; margin-left: 0.25rem;">Pearl Jam</h3>
+                <p class="text-blue-800 text-2xl" style="margin-left: 0.25rem; font-family: VDSFat;">12.52$</p>
+                <button class="mt-3 w-full bg-sky-700 transition-all duration-1000 ease text-white rounded-lg hover:bg-sky-800" style="font-family: Milky;">Order</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+
+    let myVar;
+
+    function myFunction() {
+        myVar = setTimeout(showPage, 1000);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("body").style.backgroundColor = "white";
+        document.getElementById("body").style.backgroundImage = "linear-gradient(black, navy)";
+    }
+
+</script>
+
+</html>
